@@ -11,7 +11,6 @@
 <button id="bReset" type="reset">Reset Counter</button>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>
 
@@ -32,9 +31,6 @@
     var count = READY_STATE;
     var reset = true;
     $(document).ready(function () {
-        // Initialize collapse button
-        $(".button-collapse").sideNav();
-
         $("#bClicker").click(function () {
             if (gameHasStarted()) {
                 reset = false;

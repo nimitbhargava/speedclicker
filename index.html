@@ -1,64 +1,17 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Speed Clicker Game</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
 </head>
-<body>
-<h2 id="hClickCount">To start the game click on start game button below</h2>
-<button id="bClicker" type="button">Start game</button>
-<br>
-<button id="bReset" type="reset">Reset Counter</button>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<body>
+    <h2 id="hClickCount">To start the game click on start game button below</h2>
+    <button id="bClicker" type="button">Start game</button>
+    <br>
+    <button id="bReset" type="reset">Reset Counter</button>
 </body>
 </html>
-
-<script>
-    //so when user click on
-    //start
-    //then he should get 10 seconds to click as much as on the "click me" button
-    //after 10 seconds, the button should get disabled and the reset button should get enabled
-
-
-    //ready -1 start the game, reset
-    //set 0
-    //go!  ++0 on click
-
-    const READY_STATE = -1;
-    const SET_STATE = 0;
-
-    var count = READY_STATE;
-    var reset = true;
-    $(document).ready(function () {
-        $("#bClicker").click(function () {
-            if (gameHasStarted()) {
-                reset = false;
-                $('#hClickCount').text(++count);
-                setTimeout(function () {
-                    if (!reset)
-                        $("#bClicker").attr("disabled", "disabled");
-                }, 10000);
-            }
-            else {
-                count++;
-                $('#hClickCount').text("Game started!");
-                $('#bClicker').text("Click");
-            }
-
-        });
-
-        $("#bReset").click(function () {
-            count = READY_STATE;
-            $('#hClickCount').text("Game reset done - To start the game again click on start game button below");
-            $('#bClicker').text("Start the game");
-            $("#bClicker").removeAttr("disabled");
-            reset = true;
-        });
-
-        function gameHasStarted() {
-            if (count != READY_STATE) return true;
-            return false;
-        }
-    });
-</script>
